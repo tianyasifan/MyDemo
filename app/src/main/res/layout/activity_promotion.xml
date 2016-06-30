@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <ImageView 
+        android:id="@+id/iv_poster"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"/>
+    <VideoView 
+        android:id="@+id/vv_prevue"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"/>
+
+   <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        >
+        <!--<ImageView
+            android:id="@+id/array_left"
+            android:layout_width="@dimen/array_width"
+            android:layout_height="@dimen/array_height"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/array_left_1"
+            android:layout_centerVertical="true"
+            android:visibility="invisible" />-->
+        <com.txt.view.CustomRecycleView
+	        android:id="@+id/hl_promotion"
+	        android:layout_centerHorizontal="true"
+	        android:layout_width="330dp"
+	        android:layout_height="160dp"
+	        />
+        <!--<ImageView
+            android:id="@+id/array_right"
+            android:layout_width="@dimen/array_width"
+            android:layout_height="@dimen/array_height"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/array_right_1"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/hl_promotion"
+            android:visibility="invisible" />-->
+       
+    </RelativeLayout>
+    
+</RelativeLayout>
