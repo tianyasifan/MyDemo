@@ -12,6 +12,7 @@ public class ViewDragHelperActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewdrag);
+
     }
 
     public void button(View view){

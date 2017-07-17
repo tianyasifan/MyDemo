@@ -1,7 +1,6 @@
 package com.txt.javatest;
 
 import android.util.SparseArray;
-import android.view.WindowManager;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,7 +10,7 @@ import java.util.Set;
 /**
  * Created by txt on 2016/6/27.
  */
-public class Test {
+public class TryCatchFinally {
     public static int noException(){
         int i=10;
         try{
@@ -86,7 +85,7 @@ public class Test {
     }
 
     public static void print(){
-        HashMap map = Test.noExceptionMap();
+        HashMap map = TryCatchFinally.noExceptionMap();
         Set set = map.keySet();
         Iterator iterator = set.iterator();
         for(;iterator.hasNext();){

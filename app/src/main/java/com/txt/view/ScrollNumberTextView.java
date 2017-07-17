@@ -60,7 +60,7 @@ public class ScrollNumberTextView extends TextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        for(int i=0;i<20;i++){
+        for(int i=0;i<10;i++){
             canvas.drawText(nums[i%10],0,textSize*(i+1)+detaY,mPaint);
         }
 
@@ -77,7 +77,7 @@ public class ScrollNumberTextView extends TextView {
                 break;
             case MotionEvent.ACTION_MOVE:
                 detaY = startY - (int)event.getY();
-                scrollBy(0,detaY/10);
+                scrollBy(0,detaY/100);
 //                postInvalidate();
                 break;
         }

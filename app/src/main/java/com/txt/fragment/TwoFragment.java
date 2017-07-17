@@ -26,6 +26,7 @@ public class TwoFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View view;
         view = inflater.inflate(R.layout.fragment_one,container,false);
         TextView tv = (TextView) view.findViewById(R.id.tv);
