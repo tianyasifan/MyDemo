@@ -21,4 +21,9 @@
         android:text="tab2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <Button
+        android:onClick="replaceTab1"
+        android:text="replaceTab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

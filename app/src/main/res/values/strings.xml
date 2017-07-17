@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyDemo</string>
+    <string name="title_activity_recycle_view_header">RecycleViewHeaderActivity</string>
+    <string name="title_activity_thread_tost">ThreadTostActivity</string>
+    <string name="title_activity_aidl">AidlActivity</string>
+    <string name="title_activity_move_to_back">MoveToBackActivity</string>
 </resources>
