@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.tongxt.browserapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/> <!-- 表示程序的默认入口 -->
+                <category android:name="android.intent.category.LAUNCHER"/> <!-- 被桌面识别 -->
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/> <!-- 用于显示用户的数据 比较通用，会根据用户的数据类型打开相应的Activity -->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/> <!-- 被浏览器识别，实践证明不加也可以 -->
+                <data android:scheme="znn"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BaseActivity"
+            android:label="@string/title_activity_base"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/title_activity_second"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:allowTaskReparenting="true"
+            android:launchMode="singleTask">
+
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.VIEW"/> &lt;!&ndash; 用于显示用户的数据 比较通用，会根据用户的数据类型打开相应的Activity &ndash;&gt;
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/> &lt;!&ndash; 被浏览器识别，实践证明不加也可以 &ndash;&gt;
+                <data android:scheme="znn"/>
+            </intent-filter>-->
+        </activity>
+    </application>
+
+</manifest>
