@@ -48,7 +48,10 @@ public class AsyncTaskActivity extends Activity {
          };
         task.execute();
         //从log可以看到，上个task和下面的task是串行执行的
-        new MyTask(this).execute();
+
+
+        task = new MyTask(this);
+        task.execute();
     }
 
     @Override

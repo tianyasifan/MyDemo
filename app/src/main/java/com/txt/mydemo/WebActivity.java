@@ -3,6 +3,7 @@ package com.txt.mydemo;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -21,24 +22,27 @@ public class WebActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                setNight();
+//                setNight();
             }
         });
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                setNight();
+//                setNight();
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                setNight();
+//                setNight();
+                Log.d("web", "onPageFinished");
+//                setTranslate();
             }
         });
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("https://www.thestartmagazine.com/article/2e5dbab5-64bf-451d-a6fc-4cae6252ea69?ref=TWVpWnUtU0RLJSQlSHlYNFBrZmVIRmRtMUNoN1lGNEw3MTBod004ODU5N0olJCUxMzU3OTg2NDI%3D&recommendationId=TIME_BL&theme=template6");
+//        webView.loadUrl("https://www.thestartmagazine.com/article/2e5dbab5-64bf-451d-a6fc-4cae6252ea69?ref=TWVpWnUtU0RLJSQlSHlYNFBrZmVIRmRtMUNoN1lGNEw3MTBod004ODU5N0olJCUxMzU3OTg2NDI%3D&recommendationId=TIME_BL&theme=template6");
+        webView.loadUrl("file:///android_res/" + "raw/js.html");
     }
 
     public void setNight(){
@@ -58,5 +62,57 @@ public class WebActivity extends AppCompatActivity {
                 "  \n" +
                 "})();";
         webView.loadUrl(css);
+    }
+
+    public void setTranslate(){
+        String translate = "javascript: doGet(e) {\n" +
+                "\n" +
+                "  var sourceText = ''\n" +
+                "  if (e.parameter.q){\n" +
+                "    sourceText = e.parameter.q;\n" +
+                "  }\n" +
+                "  \n" +
+                "  var sourceLang = 'auto';\n" +
+                "  if (e.parameter.source){\n" +
+                "    sourceLang = e.parameter.source;\n" +
+                "  }\n" +
+                "\n" +
+                "  var targetLang = 'ja';\n" +
+                "  if (e.parameter.target){\n" +
+                "    targetLang = e.parameter.target;\n" +
+                "  }\n" +
+                "  \n" +
+                "  /* Option 1 */\n" +
+                "  \n" +
+                "  var translatedText = LanguageApp.translate(sourceText, sourceLang, targetLang)\n" +
+                "  \n" +
+                "  /* Option 2 */  \n" +
+                "  \n" +
+                "  var url = \"https://translate.googleapis.com/translate_a/single?client=gtx&sl=\" \n" +
+                "            + sourceLang + \"&tl=\" + targetLang + \"&dt=t&q=\" + encodeURI(sourceText);\n" +
+                "  \n" +
+                "  var result = JSON.parse(UrlFetchApp.fetch(url).getContentText());\n" +
+                "  \n" +
+                "  translatedText = result[0][0][0];\n" +
+                "  \n" +
+                "  var json = {\n" +
+                "    'sourceText' : sourceText,\n" +
+                "    'translatedText' : translatedText\n" +
+                "  };\n" +
+                "  \n" +
+                "  // set JSONP callback\n" +
+                "  var callback = 'callback';\n" +
+                "  if(e.parameter.callback){\n" +
+                "    callback = e.parameter.callback\n" +
+                "  }\n" +
+                "  \n" +
+                "  // return JSONP\n" +
+                "  return ContentService\n" +
+                "           .createTextOutput(callback + '(' + JSON.stringify(json) + ')')\n" +
+                "           .setMimeType(ContentService.MimeType.JAVASCRIPT);\n" +
+                "}";
+        webView.loadUrl(translate);
+
+        webView.loadUrl("file:///android_res/" + "raw/js.html");
     }
 }

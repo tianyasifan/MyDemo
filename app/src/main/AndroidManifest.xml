@@ -106,8 +106,10 @@
         <activity android:name=".BezierActivity" />
         <activity android:name=".EmptyActivity" />
         <activity android:name=".UCActivity" />
-        <activity android:name=".WebActivity"></activity>
-        <activity android:name="com.txt.rx.RxActivity"/>
+        <activity android:name=".WebActivity" />
+        <activity android:name="com.txt.rx.RxActivity" />
+        <activity android:name="com.txt.databinding.DatabindingActivity" />
+        <activity android:name="test.com.tsapi.WebTranslateActivity"/>
     </application>
 
 </manifest>
