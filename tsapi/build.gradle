@@ -1,12 +1,12 @@
-apply plugin: 'com.android.application' // 单独编译的时候使用，并且在工程的settings.gradle中把app注释掉
-//apply plugin: 'com.android.library'
+//apply plugin: 'com.android.application' // 单独编译的时候使用，并且在工程的settings.gradle中把app注释掉
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.0'
 
     defaultConfig {
-        applicationId "test.com.tsapi" // 单独编译的时候使用
+//        applicationId "test.com.tsapi" // 单独编译的时候使用
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1

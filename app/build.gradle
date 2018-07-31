@@ -41,6 +41,7 @@ android {
 dependencies {
     compile files('libs/uc_webview_sdk.jar')
     compile files('libs/fastjson-1.1.27-android.jar')
+    //    compile project(path: ':tsapi')
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.squareup.okhttp:okhttp:2.0.0'
     compile 'com.android.support:support-v4:23.4.0'
@@ -54,5 +55,4 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     testCompile 'junit:junit:4.12'
-    compile project(path: ':tsapi')
 }

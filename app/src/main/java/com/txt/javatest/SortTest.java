@@ -95,6 +95,57 @@ public class SortTest {
 
     }
 
+    /**
+     * 冒泡排序优化，利用boolean变量，减少循环次数
+     * @param arg
+     */
+    public static void bubbleSort2(int[] arg){
+        int len = arg.length;
+        boolean isSorted;
+        for(int i=len-1;i>0;i--){
+            isSorted = true; // 每次进入大循环都设置标记
+            for(int j=0;j<i;j++){
+                if(arg[j]>arg[j+1]){//比较两个相邻的数，
+
+                    int temp = arg[j];
+                    arg[j] = arg[j+1];
+                    arg[j+1] = temp;
+                    isSorted = false; // 如果存在交换则表示还没有排好序
+                }
+            }
+            if(isSorted){ // 否则，说明内循环已经是排好序的了
+                break;//直接退出外循环
+            }
+        }
+    }
+
+    /**
+     * 冒泡优化，记录有序无序区域的边界，避免有序区域进行没必要的数据交换
+     * @param arg
+     */
+    public static void bubbleSort3(int[] arg){
+        int len = arg.length;
+        boolean isSorted;
+        int lastExchangeIndex = 0;// 记录最后一次交换（内循环）的位置
+        int sortBorder = len -1; // 无序数列的边界，每次只要比较到这里就好了
+        for(int i = 0; i < len; i++){
+            isSorted = true; // 每次进入大循环都设置标记
+            for(int j=0;j < sortBorder;j++){// 下一次内循环到无序边界就可以了
+                if(arg[j]>arg[j+1]){//比较两个相邻的数，
+                    int temp = arg[j];
+                    arg[j] = arg[j+1];
+                    arg[j+1] = temp;
+                    isSorted = false; // 如果存在交换则表示还没有排好序
+                    lastExchangeIndex = j; // 每次都更新交换的位置
+                }
+            }
+            sortBorder = lastExchangeIndex; // 每次内循环完成后更新一下边界
+            if(isSorted){ // 否则，说明内循环已经是排好序的了
+                break;//直接退出外循环
+            }
+        }
+    }
+
     public void insertSort(int arg[]){
         int len = arg.length;
         //假设初始数组是[2,6,3,8,5],要进行排序，先假定一个插入点，一般是假设第0个元素为插入点

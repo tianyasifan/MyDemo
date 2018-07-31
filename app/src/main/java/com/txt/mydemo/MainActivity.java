@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 
 //import com.txt.javatest.Main;
 import com.txt.databinding.DatabindingActivity;
+import com.txt.designpattern.factory.factory.FactoryTest;
 import com.txt.designpattern.factory.prototype.CloneTest;
 import com.txt.javatest.JsonTest;
 import com.txt.javatest.UrlEncoderUtils;
@@ -28,7 +30,7 @@ import com.txt.threadtoast.ThreadTostActivity;
 import com.txt.web2native.Web2nativeActivity;
 import com.txt.wxmvp.WXActivity;
 
-import test.com.tsapi.WebTranslateActivity;
+//import test.com.tsapi.WebTranslateActivity;
 
 public class MainActivity extends ListActivity {
 
@@ -39,7 +41,8 @@ public class MainActivity extends ListActivity {
     "自定义ViewPager实例","RecycleView实例","自定义view实例","列表悬浮头实例","动态加载","Activity生命周期",
     "从浏览器打开本地app","RecyclerView添加Header","线程里创建Toast","AIDL实例",
     "滚轮数字","进程保活-前台服务","进程保活-1像素Activity","按back键进入桌面",
-    "贝塞尔曲线", "打开一个空白的activity", "UC浏览器","系统浏览器","Rx2", "数据绑定","网页翻译"};
+    "贝塞尔曲线", "打开一个空白的activity", "UC浏览器","系统浏览器","Rx2", "数据绑定","网页翻译",
+    "布局测试", "图片裁剪"};
     private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,10 @@ public class MainActivity extends ListActivity {
         Log.e(TAG, " " + UrlEncoderUtils.hasUrlEncoded("sms:+7 915 444-54-44"));
 
         new JsonTest().json();
+
+        FactoryTest.test(this);
+
+        getCarrier();
     }
 
 
@@ -202,7 +209,13 @@ public class MainActivity extends ListActivity {
                 startActivity(new Intent(this, DatabindingActivity.class));
                 break;
             case 39:// 网页翻译
-                startActivity(new Intent(this, WebTranslateActivity.class));
+//                startActivity(new Intent(this, WebTranslateActivity.class));
+                break;
+            case 40: // 布局
+                startActivity(new Intent(this, LayoutActivity.class));
+                break;
+            case 41: // 图片裁剪
+                startActivity(new Intent(this, ImageActivity.class));
                 break;
             default:
                 break;
@@ -224,6 +237,30 @@ public class MainActivity extends ListActivity {
                 KeepLiveActivity.KeepManager.getInstance().startKeepLiveActivity(MainActivity.this);
             }else if(Intent.ACTION_SCREEN_ON.equals(action)){
                 KeepLiveActivity.KeepManager.getInstance().finishKeepLiveActivity();
+            }
+        }
+    }
+
+    //获取运营商
+    public void getCarrier() {
+        /*String region = Settings.Global.getString(AppContextUtils.getAppContext().getContentResolver(), "mz_custom_marketing_region");
+        String tim = Settings.Global.getString(AppContextUtils.getAppContext().getContentResolver(), "mz_custom_marketing_carrier");
+        LogUtils.e("IN", "地区： " + region + ", 运营商:　" + tim);
+        if ("CL".equals(region) && "WOM".equals(tim)){
+            return true;
+        }
+        return false;*/
+        TelephonyManager telManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        String imsi = telManager.getSubscriberId();
+        if(imsi!=null){
+            if(imsi.startsWith("46000") || imsi.startsWith("46002")){//因为移动网络编号46000下的IMSI已经用完，所以虚拟了一个46002编号，134/159号段使用了此编号
+                Log.w("carrier", "中国移动");//中国移动
+            }else if(imsi.startsWith("46001")){
+                Log.w("carrier", "中国联通");//中国联通
+            }else if(imsi.startsWith("46003")){
+                Log.w("carrier", "中国电信"); //中国电信
+            }else if(imsi.startsWith("73009")){
+                Log.w("carrier", "智利WOM");
             }
         }
     }

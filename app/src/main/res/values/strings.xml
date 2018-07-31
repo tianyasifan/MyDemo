@@ -4,4 +4,5 @@
     <string name="title_activity_thread_tost">ThreadTostActivity</string>
     <string name="title_activity_aidl">AidlActivity</string>
     <string name="title_activity_move_to_back">MoveToBackActivity</string>
+    <string name="title_activity_layout">LayoutActivity</string>
 </resources>
