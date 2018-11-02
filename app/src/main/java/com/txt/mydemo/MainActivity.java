@@ -2,9 +2,13 @@ package com.txt.mydemo;
 
 import android.app.ListActivity;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Handler;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -30,6 +34,8 @@ import com.txt.threadtoast.ThreadTostActivity;
 import com.txt.web2native.Web2nativeActivity;
 import com.txt.wxmvp.WXActivity;
 
+import java.util.List;
+
 //import test.com.tsapi.WebTranslateActivity;
 
 public class MainActivity extends ListActivity {
@@ -42,7 +48,7 @@ public class MainActivity extends ListActivity {
     "从浏览器打开本地app","RecyclerView添加Header","线程里创建Toast","AIDL实例",
     "滚轮数字","进程保活-前台服务","进程保活-1像素Activity","按back键进入桌面",
     "贝塞尔曲线", "打开一个空白的activity", "UC浏览器","系统浏览器","Rx2", "数据绑定","网页翻译",
-    "布局测试", "图片裁剪"};
+    "布局测试", "图片裁剪", "new app"};
     private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,6 +223,8 @@ public class MainActivity extends ListActivity {
             case 41: // 图片裁剪
                 startActivity(new Intent(this, ImageActivity.class));
                 break;
+            case 42: //
+                doStartApplicationWithPackageName(this, "com.android.browser");
             default:
                 break;
         }
@@ -261,6 +269,57 @@ public class MainActivity extends ListActivity {
                 Log.w("carrier", "中国电信"); //中国电信
             }else if(imsi.startsWith("73009")){
                 Log.w("carrier", "智利WOM");
+            }
+        }
+    }
+
+    /**
+     * 打开某个应用
+     *
+     * @param context
+     * @param packagename
+     */
+    public static void doStartApplicationWithPackageName(Context context, String packagename) {
+
+        // 通过包名获取此APP详细信息，包括Activities、services、versioncode、name等等
+        PackageInfo packageinfo = null;
+        try {
+            packageinfo = context.getPackageManager().getPackageInfo(packagename, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (packageinfo == null) {
+            return;
+        }
+
+        // 创建一个类别为CATEGORY_LAUNCHER的该包名的Intent
+        Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+        resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        resolveIntent.setPackage(packageinfo.packageName);
+
+        // 通过getPackageManager()的queryIntentActivities方法遍历
+        List<ResolveInfo> resolveinfoList = context.getPackageManager()
+                .queryIntentActivities(resolveIntent, 0);
+
+        ResolveInfo resolveinfo = resolveinfoList.iterator().next();
+        if (resolveinfo != null) {
+            // packagename = 参数packname
+            String packageName = resolveinfo.activityInfo.packageName;
+            // 这个就是我们要找的该APP的LAUNCHER的Activity[组织形式：packagename.mainActivityname]
+            String className = resolveinfo.activityInfo.name;
+            // LAUNCHER Intent
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+            // 设置ComponentName参数1:packagename参数2:MainActivity路径
+            ComponentName cn = new ComponentName(packageName, className);
+
+            intent.setComponent(cn);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            try {
+                context.startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
