@@ -68,7 +68,6 @@
             android:name="com.txt.service.MyMessengerService"
             android:process=":remote" />
 
-        <activity android:name=".LifecycleTargetActivity1" />
         <activity android:name="com.txt.web2native.Web2nativeActivity" />
         <activity
             android:name="com.txt.recycleview.RecycleViewHeaderActivity"
@@ -110,7 +109,7 @@
         <activity android:name=".WebActivity" />
         <activity android:name="com.txt.rx.RxActivity" />
         <activity android:name="com.txt.databinding.DatabindingActivity" />
-        <activity android:name="test.com.tsapi.WebTranslateActivity" />
+        <!--<activity android:name="test.com.tsapi.WebTranslateActivity" />-->
         <activity
             android:name=".LayoutActivity"
             android:label="@string/title_activity_layout"

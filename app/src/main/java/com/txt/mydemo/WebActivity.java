@@ -42,7 +42,16 @@ public class WebActivity extends AppCompatActivity {
         });
         webView.getSettings().setJavaScriptEnabled(true);
 //        webView.loadUrl("https://www.thestartmagazine.com/article/2e5dbab5-64bf-451d-a6fc-4cae6252ea69?ref=TWVpWnUtU0RLJSQlSHlYNFBrZmVIRmRtMUNoN1lGNEw3MTBod004ODU5N0olJCUxMzU3OTg2NDI%3D&recommendationId=TIME_BL&theme=template6");
-        webView.loadUrl("file:///android_res/" + "raw/js.html");
+//        webView.loadUrl("file:///android_res/" + "raw/js.html");
+
+        webView.loadUrl("http://v-res.in.meizu.com/news/article/103.html");
+
+        webView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                Log.i("web", "onScrollChange");
+            }
+        });
     }
 
     public void setNight(){

@@ -1,12 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="tab">
@@ -15,12 +14,12 @@
     </style>
 
     <style name="MyTheme" parent="AppTheme">
-        <item name="android:windowBackground">@mipmap/home_bg</item>
+        <item name="android:windowBackground">@mipmap/splash</item>
     </style>
 
     <style name="Theme.Transparent" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/color1</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>

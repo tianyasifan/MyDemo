@@ -52,7 +52,7 @@ public class MainActivity extends ListActivity {
     private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.MyTheme);
+//        setTheme(R.style.MyTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ImageView home = (ImageView)findViewById(R.id.iv_home);
@@ -136,13 +136,13 @@ public class MainActivity extends ListActivity {
             case 13:
                 startActivity(new Intent(this,ViewPagerGalleryActivity.class));
                 break;
-            case 14:
+            case 14:// activity和service生命周期
                 startActivity(new Intent(this,Service1Activity.class));
                 break;
-            case 15:
+            case 15:// activity与远程service
                 startActivity(new Intent(this,AidlActivity.class));
                 break;
-            case 16:
+            case 16:// bind线程池
                 startActivity(new Intent(this,AidlBinderPoolActivity.class));
                 break;
             case 17:
@@ -259,7 +259,12 @@ public class MainActivity extends ListActivity {
         }
         return false;*/
         TelephonyManager telManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        String imsi = telManager.getSubscriberId();
+        String imsi = null;
+        try {
+            telManager.getSubscriberId();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         if(imsi!=null){
             if(imsi.startsWith("46000") || imsi.startsWith("46002")){//因为移动网络编号46000下的IMSI已经用完，所以虚拟了一个46002编号，134/159号段使用了此编号
                 Log.w("carrier", "中国移动");//中国移动

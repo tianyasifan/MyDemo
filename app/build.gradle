@@ -5,7 +5,7 @@ android {
     buildToolsVersion '26.0.0'
     defaultConfig {
         applicationId 'com.txt.mydemo'
-        minSdkVersion 14
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -55,4 +55,6 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.meizu.flyme.sdk:glrenderer:3.2.3'
+    compile 'com.dasu.image:blur:0.0.6'
 }
