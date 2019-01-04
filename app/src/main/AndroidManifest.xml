@@ -133,7 +133,8 @@
                 <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".FontSizeActivity"></activity>
+        <activity android:name=".FontSizeActivity" />
+        <activity android:name=".ScrollViewActivity"></activity>
     </application>
 
 </manifest>
