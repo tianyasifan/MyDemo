@@ -7,6 +7,7 @@ import com.txt.IMyAidlInterface;
 
 /**
  * Created by txt on 2016/5/17.
+ * 运行在服务端
  */
 public class BinderOne extends IMyAidlInterface.Stub{
     @Override

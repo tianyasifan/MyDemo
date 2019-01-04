@@ -109,27 +109,31 @@
         <activity android:name=".WebActivity" />
         <activity android:name="com.txt.rx.RxActivity" />
         <activity android:name="com.txt.databinding.DatabindingActivity" />
-        <!--<activity android:name="test.com.tsapi.WebTranslateActivity" />-->
+        <!-- <activity android:name="test.com.tsapi.WebTranslateActivity" /> -->
         <activity
             android:name=".LayoutActivity"
             android:label="@string/title_activity_layout"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ImageActivity" />
-        <activity android:name=".IntentTestActivity"
+        <activity
+            android:name=".IntentTestActivity"
             android:exported="false">
             <intent-filter>
-            <action android:name="android.intent.action.VIEW"/>
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE"/>
-            <data android:scheme="player" />
-            <data android:scheme="content" />
-            <data android:scheme="ucweb" />
-            <data android:scheme="http" />
-            <data android:scheme="https" />
-            <data android:mimeType="audio/*"/>
-            <data android:mimeType="video/*"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="player" />
+                <data android:scheme="content" />
+                <data android:scheme="ucweb" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
+        <activity android:name=".FontSizeActivity"></activity>
     </application>
 
 </manifest>

@@ -26,7 +26,7 @@ public class BinderPoolFactory {
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            mIBinderPool = BinderPoolImpl.Stub.asInterface(service);
+            mIBinderPool = BinderPoolImpl.Stub.asInterface(service); // 拿到服务端的binder对象
         }
 
         @Override
@@ -65,7 +65,7 @@ public class BinderPoolFactory {
     }
 
     /**
-     * 实现查询Binder的接口
+     * 实现查询Binder的接口，运行在服务端
      */
    public static class BinderPoolImpl extends IBinderPool.Stub{
 

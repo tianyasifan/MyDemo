@@ -27,19 +27,17 @@ public class MyAidlService extends Service {
     //用RemoteCallbackList封装了一下监听器
     private RemoteCallbackList<IOnComputerArrivedListener> mListener = new RemoteCallbackList<>();
 
-    //传递基本数据类型
-    private Binder mBinder = new IMyAidlInterface.Stub() {
-        @Override
-        public int add(int first, int second) throws RemoteException {
-            return first+second;
-        }
-    };
-
     private String tag = MyAidlService.class.getSimpleName();
     //传递自定义实体类型，并且增加回调接口（用户服务端主动通知客户端）
     private Binder mComputerBinder = new IComputerManager.Stub() {
         @Override
         public void addComputer(ComputerEntity entity) throws RemoteException {
+            Log.w(tag, "addComputer, thread:" + Thread.currentThread()); // 执行在Binder线程Thread[Binder:3223_1,5,main]
+            try {
+                Thread.sleep(10000); // 休眠6s后执行，看调用者（客户端是否被挂起）
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             mComputerEntities.add(entity);
         }
 
@@ -96,7 +94,7 @@ public class MyAidlService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-//        return mBinder;
+        Log.w(tag, "onBind, thread:" + Thread.currentThread()); // 执行在主线程
         return mComputerBinder;
     }
 

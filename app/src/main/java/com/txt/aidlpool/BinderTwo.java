@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by txt on 2016/5/17.
+ * 运行在服务端，并能主动通知客户端
  */
 public class BinderTwo extends IComputerManager.Stub {
     private String tag = BinderTwo.class.getSimpleName();
