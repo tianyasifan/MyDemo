@@ -205,7 +205,7 @@ public class MainActivity extends ListActivity {
             case 35: // UCweb
                 startActivity(new Intent(this, UCActivity.class));
                 break;
-            case 36:
+            case 36: // 系统浏览器
                 startActivity(new Intent(this, WebActivity.class));
                 break;
             case 37:

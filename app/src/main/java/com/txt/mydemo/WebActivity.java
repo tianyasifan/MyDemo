@@ -8,6 +8,8 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class WebActivity extends AppCompatActivity {
 
@@ -50,6 +52,15 @@ public class WebActivity extends AppCompatActivity {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 Log.i("web", "onScrollChange");
+            }
+        });
+
+        final EditText editText = (EditText) findViewById(R.id.edit_web);
+        Button button = (Button) findViewById(R.id.btn_web);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.loadUrl(editText.getText().toString());
             }
         });
     }
