@@ -36,6 +36,12 @@ android {
     dataBinding {
         enabled = true
     }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
@@ -57,4 +63,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.meizu.flyme.sdk:glrenderer:3.2.3'
     compile 'com.dasu.image:blur:0.0.6'
+
+//    compile 'com.google.firebase:firebase-core:16.0.4'
+    compile(name: 'affiliatetrigger', ext: 'aar')
 }
+
+//apply plugin: 'com.google.gms.google-services'
