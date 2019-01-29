@@ -118,6 +118,7 @@
     <orderEntry type="library" name="Gradle: __local_aars__:/home/meizu/AndroidStudioProjects/MyDemo/app/libs/fastjson-1.1.27-android.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7:23.4.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.reactivex.rxjava2:rxandroid:2.0.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.6.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: :affiliatetrigger:@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:cardview-v7:23.4.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout:1.0.2@aar" level="project" />
@@ -128,6 +129,7 @@
     <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable:23.4.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.jakewharton:butterknife:5.1.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.dasu.image:blur:0.0.6@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.retrofit2:converter-gson:2.0.2@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.6.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:23.4.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-v4:23.4.0@aar" level="project" />
