@@ -49,7 +49,7 @@ public class MainActivity extends ListActivity {
     "从浏览器打开本地app","RecyclerView添加Header","线程里创建Toast","AIDL实例",
     "滚轮数字","进程保活-前台服务","进程保活-1像素Activity","按back键进入桌面",
     "贝塞尔曲线", "打开一个空白的activity", "UC浏览器","系统浏览器","Rx2", "数据绑定","网页翻译",
-    "布局测试", "图片裁剪", "new app", "字体大小适配", "View的滑动", "运算符测试"};
+    "布局测试", "图片裁剪", "new app", "字体大小适配", "View的滑动", "运算符测试","水漫小房子动画效果实现"};
     private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,7 +170,7 @@ public class MainActivity extends ListActivity {
             case 24://生命周期
                 startActivity(new Intent(this,LifecycleActivity.class));
                 break;
-            case 25:
+            case 25://从浏览器打开本地app
                 startActivity(new Intent(this, Web2nativeActivity.class));
                 break;
             case 26:
@@ -235,6 +235,9 @@ public class MainActivity extends ListActivity {
                 break;
             case 45: //运算符测试
                 OperatorTest.test();
+                break;
+            case 46://水漫小房子动画效果
+                startActivity(new Intent(this, CustomAnimActivity.class));
                 break;
             default:
                 break;
