@@ -134,7 +134,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FontSizeActivity" />
-        <activity android:name=".ScrollViewActivity"></activity>
+        <activity android:name=".ScrollViewActivity" />
+        <activity android:name=".CustomAnimActivity"></activity>
     </application>
 
 </manifest>
