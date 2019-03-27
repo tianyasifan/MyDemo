@@ -6,8 +6,8 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.meizu.common.renderer.drawable.GLBlurBitmapDrawable;
-import com.meizu.common.renderer.effect.GLRenderer;
+//import com.meizu.common.renderer.drawable.GLBlurBitmapDrawable;
+//import com.meizu.common.renderer.effect.GLRenderer;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class StaticBlurEffect extends View {
 
     private static final String TAG = "GLBlendView";
-    private GLBlurBitmapDrawable mGLBitmap;
+//    private GLBlurBitmapDrawable mGLBitmap;
     //private Bitmap mImage;
 
     private int mMaskColor;
@@ -38,14 +38,14 @@ public class StaticBlurEffect extends View {
     public StaticBlurEffect(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        GLRenderer.initialize(context);
+        /*GLRenderer.initialize(context);
         mGLBitmap = new GLBlurBitmapDrawable(null, false);
 
         setBackground(mGLBitmap);
-        isBimtapSet = false;
+        isBimtapSet = false;*/
     }
 
-    public void setBitmap(Bitmap bitmap) {
+    /*public void setBitmap(Bitmap bitmap) {
         if (true) {
             //mImage = bitmap;
             mGLBitmap.setBitmap(bitmap);
@@ -69,7 +69,7 @@ public class StaticBlurEffect extends View {
             invalidate();
             //Log.e("wangjiangchuan", "draw setbitmap !");
         }
-    }
+    }*/
 
     public int getmMaskColor() {
         return mMaskColor;
@@ -79,7 +79,7 @@ public class StaticBlurEffect extends View {
         return mBitmapColor;
     }
 
-    public void setCount(float count) {
+    /*public void setCount(float count) {
         mGLBitmap.setPassCount((int) count);
     }
 
@@ -97,7 +97,7 @@ public class StaticBlurEffect extends View {
 
     public void setCoverColor(int color) {
         mGLBitmap.setColorFilter(color);
-    }
+    }*/
 
     public static float[] rgb2hsb(int rgbR, int rgbG, int rgbB) {
         assert 0 <= rgbR && rgbR <= 255;
