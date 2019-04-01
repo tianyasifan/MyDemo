@@ -3,7 +3,9 @@ package com.txt.mydemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LifecycleTargetActivity1 extends AppCompatActivity {
+import com.txt.base.BaseActivity;
+
+public class LifecycleTargetActivity1 extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
