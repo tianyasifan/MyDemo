@@ -135,7 +135,14 @@
         </activity>
         <activity android:name=".FontSizeActivity" />
         <activity android:name=".ScrollViewActivity" />
-        <activity android:name=".CustomAnimActivity"></activity>
+        <activity android:name=".CustomAnimActivity" />
+
+        <activity android:name="com.aidl.AidlActivity"/>
+        <service
+            android:name="com.aidl.AidlService"
+            android:process=":remote"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
