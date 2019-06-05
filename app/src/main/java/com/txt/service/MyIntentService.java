@@ -32,6 +32,5 @@ public class MyIntentService extends IntentService {
     public void onDestroy() {
         super.onDestroy();
         Log.i("myIntentService","onDestroy");
-
     }
 }

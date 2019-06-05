@@ -116,7 +116,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ImageActivity" />
         <activity
-            android:name=".IntentTestActivity"
+            android:name=".IntentServiceTestActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -143,6 +143,8 @@
             android:process=":remote"
             android:enabled="true"
             android:exported="true"></service>
+
+        <meta-data android:name="com.meizu.syncsdk.SUPPORT" android:value="@string/browser_sync_title"/>
     </application>
 
 </manifest>
