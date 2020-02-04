@@ -6,9 +6,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -49,14 +51,16 @@ public class MainActivity extends ListActivity {
     "从浏览器打开本地app","RecyclerView添加Header","线程里创建Toast","AIDL实例",
     "滚轮数字","进程保活-前台服务","进程保活-1像素Activity","按back键进入桌面",
     "贝塞尔曲线", "打开一个空白的activity", "UC浏览器","系统浏览器","Rx2", "数据绑定","网页翻译",
-    "布局测试", "图片裁剪", "new app", "字体大小适配", "View的滑动", "运算符测试","水漫小房子动画效果实现"};
+    "布局测试", "图片裁剪", "new app", "字体大小适配", "View的滑动", "运算符测试","水漫小房子动画效果实现",
+    "AIDL in out参数测试", "IntentService顺序执行任务测试"};
     private Handler handler;
+    private ImageView home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        setTheme(R.style.MyTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final ImageView home = (ImageView)findViewById(R.id.iv_home);
+        home = (ImageView)findViewById(R.id.iv_home);
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -81,6 +85,20 @@ public class MainActivity extends ListActivity {
         FactoryTest.test(this);
 
         getCarrier();
+
+        testAppinfo();
+    }
+
+    private void testAppinfo(){
+        ApplicationInfo appInfo = null;
+        try {
+            appInfo = getPackageManager().getApplicationInfo("com.android.browser",
+                    PackageManager.GET_META_DATA);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        String appName = appInfo.metaData.getString("com.meizu.syncsdk.SUPPORT");
+        Log.e("applicationInfo", "appName:" + appName);
     }
 
 
@@ -239,6 +257,12 @@ public class MainActivity extends ListActivity {
             case 46://水漫小房子动画效果
                 startActivity(new Intent(this, CustomAnimActivity.class));
                 break;
+            case 47://AIDL in out参数测试
+                startActivity(new Intent(this, com.aidl.AidlActivity.class));
+                break;
+            case 48://IntentService顺序执行任务测试
+                startActivity(new Intent(this, IntentServiceTestActivity.class));
+                break;
             default:
                 break;
         }
@@ -248,6 +272,9 @@ public class MainActivity extends ListActivity {
     protected void onDestroy() {
         super.onDestroy();
         stopService(new Intent(this, ForegroundService.class));//停止前台服务
+        if(home != null && home.getDrawable() instanceof BitmapDrawable){
+            ((BitmapDrawable) home.getDrawable()).getBitmap().recycle();
+        }
     }
 
     public class KeepLiveReceiver extends BroadcastReceiver{

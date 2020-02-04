@@ -116,7 +116,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ImageActivity" />
         <activity
-            android:name=".IntentTestActivity"
+            android:name=".IntentServiceTestActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -135,7 +135,16 @@
         </activity>
         <activity android:name=".FontSizeActivity" />
         <activity android:name=".ScrollViewActivity" />
-        <activity android:name=".CustomAnimActivity"></activity>
+        <activity android:name=".CustomAnimActivity" />
+
+        <activity android:name="com.aidl.AidlActivity"/>
+        <service
+            android:name="com.aidl.AidlService"
+            android:process=":remote"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <meta-data android:name="com.meizu.syncsdk.SUPPORT" android:value="@string/browser_sync_title"/>
     </application>
 
 </manifest>
