@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter()
+        google()
 //        maven { url 'http://artifactory.rnd.meizu.com/artifactory/all' }
     }
     dependencies {
@@ -16,6 +17,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
 //        maven { url 'http://artifactory.rnd.meizu.com/artifactory/all' }
     }
 }

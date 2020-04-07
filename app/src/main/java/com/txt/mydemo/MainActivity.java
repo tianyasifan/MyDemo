@@ -24,6 +24,7 @@ import android.widget.ListView;
 import com.txt.databinding.DatabindingActivity;
 import com.txt.designpattern.factory.factory.FactoryTest;
 import com.txt.designpattern.factory.prototype.CloneTest;
+import com.txt.gray.GrayActivity;
 import com.txt.javatest.JsonTest;
 import com.txt.javatest.OperatorTest;
 import com.txt.javatest.UrlEncoderUtils;
@@ -52,7 +53,7 @@ public class MainActivity extends ListActivity {
     "滚轮数字","进程保活-前台服务","进程保活-1像素Activity","按back键进入桌面",
     "贝塞尔曲线", "打开一个空白的activity", "UC浏览器","系统浏览器","Rx2", "数据绑定","网页翻译",
     "布局测试", "图片裁剪", "new app", "字体大小适配", "View的滑动", "运算符测试","水漫小房子动画效果实现",
-    "AIDL in out参数测试", "IntentService顺序执行任务测试"};
+    "AIDL in out参数测试", "IntentService顺序执行任务测试","app灰化"};
     private Handler handler;
     private ImageView home;
     @Override
@@ -262,6 +263,9 @@ public class MainActivity extends ListActivity {
                 break;
             case 48://IntentService顺序执行任务测试
                 startActivity(new Intent(this, IntentServiceTestActivity.class));
+                break;
+            case 49:
+                startActivity(new Intent(this, GrayActivity.class));
                 break;
             default:
                 break;

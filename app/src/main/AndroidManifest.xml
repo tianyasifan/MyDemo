@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.txt.gray.GrayActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -108,8 +109,7 @@
         <activity android:name=".UCActivity" />
         <activity android:name=".WebActivity" />
         <activity android:name="com.txt.rx.RxActivity" />
-        <activity android:name="com.txt.databinding.DatabindingActivity" />
-        <!-- <activity android:name="test.com.tsapi.WebTranslateActivity" /> -->
+        <activity android:name="com.txt.databinding.DatabindingActivity" /> <!-- <activity android:name="test.com.tsapi.WebTranslateActivity" /> -->
         <activity
             android:name=".LayoutActivity"
             android:label="@string/title_activity_layout"
@@ -136,15 +136,17 @@
         <activity android:name=".FontSizeActivity" />
         <activity android:name=".ScrollViewActivity" />
         <activity android:name=".CustomAnimActivity" />
+        <activity android:name="com.aidl.AidlActivity" />
 
-        <activity android:name="com.aidl.AidlActivity"/>
         <service
             android:name="com.aidl.AidlService"
-            android:process=":remote"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true"
+            android:process=":remote" />
 
-        <meta-data android:name="com.meizu.syncsdk.SUPPORT" android:value="@string/browser_sync_title"/>
+        <meta-data
+            android:name="com.meizu.syncsdk.SUPPORT"
+            android:value="@string/browser_sync_title" />
     </application>
 
 </manifest>
